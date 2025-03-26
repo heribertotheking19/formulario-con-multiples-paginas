@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario Multipágina Dinámico</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="form-container">
+    <form id="multiPageForm">
+      <!-- Página 1: Datos Personales -->
+      <div class="form-page" id="page1" style="display: block;">
+        <h2>Datos Personales</h2>
+        <label>Nombre: <input type="text" id="nombre" value="Juan Pérez" oninput="updateLabels()" required /></label>
+        <label id="labelEdad">Edad de Juan Pérez: <input type="number" id="edad" required /></label>
+        <label id="labelDireccion">Dirección de Juan Pérez: <input type="text" id="direccion" value="Calle Ramon Santana Santo   Domingo 123" required /></label>
+        <button type="button" onclick="validateAndNext(1, 2)">Siguiente</button>
+      </div>
+
+      <!-- Página 2: Familiares -->
+      <div class="form-page" id="page2">
+        <h2>Familiares</h2>
+        <label>Nombre: <input type="text" id="familiarNombre" value="Ana Pérez" /></label>
+        <label>Parentesco: <input type="text" id="parentesco" value="Hermana" /></label>
+        <label>Edad: <input type="number" id="familiarEdad" value="30" /></label>
+        <button type="button" onclick="addFamiliar()">Agregar Familiar</button>
+        <ul id="familiaresList"></ul>
+        <button type="button" onclick="nextPage(3)">Siguiente</button>
+        <button type="button" onclick="nextPage(1)">Atrás</button>
+      </div>
+
+      <!-- Página 3: Condiciones Pre-Existentes -->
+      <div class="form-page" id="page3">
+        <h2>Condiciones Pre-Existentes</h2>
+        <label>Enfermedad: <input type="text" id="enfermedad" value="Hipertensión" /></label>
+        <label>Tiempo con la Enfermedad (años): <input type="number" id="tiempoEnfermedad" value="5" /></label>
+        <button type="button" onclick="addCondicion()">Agregar Condición</button>
+        <ul id="condicionesList"></ul>
+        <button type="button" onclick="nextPage(4)">Siguiente</button>
+        <button type="button" onclick="nextPage(2)">Atrás</button>
+      </div>
+
+      <!-- Página 4: Internamientos -->
+      <div class="form-page" id="page4">
+        <h2>Internamientos Realizados</h2>
+        <label>Fecha: <input type="date" id="fecha" value="2023-03-19" /></label>
+        <label>Centro Médico: <input type="text" id="centroMedico" /></label>
+        <label>Diagnóstico: <input type="text" id="diagnostico" /></label>
+        <button type="button" onclick="addInternamiento()">Agregar Internamiento</button>
+        <ul id="internamientosList"></ul>
+        <button type="button" onclick="nextPage(5)">Siguiente</button>
+        <button type="button" onclick="nextPage(3)">Atrás</button>
+      </div>
+
+      <!-- Página 5: Resumen -->
+      <div class="form-page" id="page5">
+        <h2>Resumen de Datos</h2>
+        <pre id="result"></pre>
+        <button type="button" onclick="nextPage(4)">Atrás</button>
+      </div>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
